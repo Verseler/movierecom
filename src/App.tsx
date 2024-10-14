@@ -4,7 +4,6 @@ import MainLayout from "@/layouts/MainLayout";
 import Home from "@/pages/Home";
 import Movies from "@/pages/Movies";
 import TvShows from "@/pages/TvShows";
-import Settings from "@/pages/Settings";
 import FilmDetails from "@/pages/FilmDetails";
 import SearchResult from "@/pages/SearchResult";
 import NotFound from "./pages/NotFound";
@@ -22,7 +21,6 @@ function App() {
           <Route path="tv-shows" element={<TvShows />} />
           <Route path=":id" element={<FilmDetails />} />
           <Route path="search-result" element={<SearchResult />} />
-          <Route path="settings" element={<Settings />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
