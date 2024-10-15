@@ -88,7 +88,7 @@ export default function FilmHeroSection({
         <div className="flex flex-col-reverse items-center ms-0 md:flex-row">
           <div
             aria-label="film hero section"
-            className="space-y-4 md:max-w-[70vh]"
+            className="space-y-4 w-full md:max-w-[70vh]"
           >
             <motion.div
               initial={{ y: -20, opacity: 0 }}
