@@ -14,12 +14,12 @@ function App() {
 
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
+      <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="movies" element={<Movies />} />
           <Route path="tv-shows" element={<TvShows />} />
-          <Route path=":id" element={<FilmDetails />} />
+          <Route path=":id" element={<FilmDetails key={location.pathname} />} />
           <Route path="search-result" element={<SearchResult />} />
         </Route>
         <Route path="*" element={<NotFound />} />

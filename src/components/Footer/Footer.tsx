@@ -16,7 +16,7 @@ export default function Footer() {
 
           <ul className="flex flex-col items-center justify-center text-lg gap-7 md:flex-row md:gap-12">
             {NavLinks.map((link) => (
-              <li>
+              <li key={link.id}>
                 <Link
                   to={link.navPath}
                   className="text-white hover:text-neutral-300"
