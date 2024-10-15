@@ -7,14 +7,14 @@ type TitleProps = {
 
 export default function Title({ children, className, ...props }: TitleProps) {
   return (
-    <span
+    <h1
       className={cn(
-        "block pb-2 text-4xl font-semibold tracking-tight text-white scroll-m-20 first:mt-0",
+        "block pb-2 text-3xl line-clamp-2 md:text-4xl font-semibold tracking-tight text-white scroll-m-20 first:mt-0",
         className
       )}
       {...props}
     >
       {children}
-    </span>
+    </h1>
   );
 }

@@ -19,6 +19,7 @@ import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import SearchBar from "@/components/ui/searchBar";
 import { motion } from "framer-motion";
+import { useMediaQuery } from "usehooks-ts";
 
 type FilmHeroSectionProps = {
   disableInfoButton?: boolean;
@@ -34,6 +35,7 @@ export default function FilmHeroSection({
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const filmType: FilmType = (searchParams.get("type") as FilmType) || "movie";
+  const isMobileScreen = useMediaQuery("(max-width: 768px)");
 
   const {
     data: filmDetails,
@@ -80,11 +82,11 @@ export default function FilmHeroSection({
 
   return (
     <div
-      className="relative flex items-end md:items-center p-2 h-[70vh] md:h-screen text-neutral-300"
+      className="relative flex items-end md:items-center p-2 h-[60vh] md:h-screen text-neutral-300"
       style={heroBackgroundStyle}
     >
       <SearchBar />
-      <AlignContainer className="w-full">
+      <AlignContainer className="w-full ms-0">
         <div className="flex flex-col-reverse items-center ms-0 md:flex-row">
           <div
             aria-label="film hero section"
@@ -129,7 +131,7 @@ export default function FilmHeroSection({
             <motion.div
               initial={{ y: -15, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.3, delay: 0.6 }}
+              transition={{ duration: 0.3, delay: isMobileScreen ? 0.2 : 0.6 }}
               className="flex items-center justify-center pb-2 md:justify-normal md:pb-0 md:pt-6 gap-x-3"
             >
               <Dialog>
@@ -166,7 +168,7 @@ export default function FilmHeroSection({
             </motion.div>
           </div>
 
-          <div className="w-full mb-4 md:mb-0">
+          <div className="flex justify-center w-full mb-4 md:mb-0">
             {posterImageSrc && showPoster && (
               <FilmPoster imageSrc={posterImageSrc} />
             )}

@@ -1,4 +1,5 @@
 import AlignContainer from "@/components/AlignContainer/AlignContainer";
+import H1 from "@/components/Typography/H1";
 import SearchBar from "@/components/ui/searchBar";
 import { useGetSearchFilmQuery } from "@/features/film/filmApi";
 import FilmCatalog from "@/features/film/FilmCatalog";
@@ -17,8 +18,9 @@ export default function SearchResult() {
     <>
       <SearchBar />
       <AlignContainer className="py-10 space-y-10">
+        <H1 className="mt-10 md:mt-0">{`Search Result for "${name}"`}</H1>
         <FilmCatalog
-          label={`Search Result for "${name}"`}
+          label=""
           data={data?.results}
           isLoading={isLoading}
           loadMorePage={loadMorePage}
