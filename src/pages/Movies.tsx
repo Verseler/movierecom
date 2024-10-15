@@ -6,6 +6,7 @@ import {
   useGetTrendingFilmsQuery,
 } from "@/features/film/filmApi";
 import { useState } from "react";
+import H1 from "@/components/Typography/H1";
 
 export default function Movies() {
   const { data: topRatedMovies, isLoading: topRatedMoviesIsLoading } =
@@ -19,7 +20,8 @@ export default function Movies() {
   const loadMorePage = () => setPage(page + 1);
 
   return (
-    <AlignContainer className="py-10 space-y-10">
+    <AlignContainer className="py-4 space-y-6 md:space-y-10 md:py-10">
+      <H1>Movies</H1>
       <FilmCarousel
         label="Top Rated"
         data={topRatedMovies?.results}

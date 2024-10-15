@@ -25,7 +25,7 @@ export default function FilmDetails() {
   return (
     <>
       <FilmHeroSection id={filmId} disableInfoButton showPoster />
-      <AlignContainer className="py-10 space-y-10">
+      <AlignContainer className="py-4 space-y-6 md:space-y-10 md:py-10">
         <FilmCarousel
           label="Similar"
           data={similarFilms?.results}

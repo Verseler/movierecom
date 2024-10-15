@@ -1,4 +1,5 @@
 import AlignContainer from "@/components/AlignContainer/AlignContainer";
+import H1 from "@/components/Typography/H1";
 import {
   useGetFilmsQuery,
   useGetTrendingFilmsQuery,
@@ -19,7 +20,8 @@ export default function TvShows() {
   const loadMorePage = () => setPage(page + 1);
 
   return (
-    <AlignContainer className="py-10 space-y-10">
+    <AlignContainer className="py-4 space-y-6 md:space-y-10 md:py-10">
+      <H1>Tv Shows</H1>
       <FilmCarousel
         label="Top Rated"
         data={topRatedSeries?.results}
