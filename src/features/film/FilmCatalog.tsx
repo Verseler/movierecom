@@ -18,7 +18,7 @@ export default function FilmCatalog({
   loadMorePage,
 }: FilmCatalogProps) {
   const catalogItemsEmptyPlaceholder = Array.from({ length: 20 }).map(
-    (_, index) => <Skeleton key={index} className="h-72 aspect-[3/5]" />
+    (_, index) => <Skeleton key={index} className="w-full h-72" />
   );
 
   const catalogItems = data?.map((film) => {
@@ -42,7 +42,7 @@ export default function FilmCatalog({
 
   return (
     <div className="w-full space-y-4 pe-2 md:pe-4">
-      <H2 aria-label="section title">{label}</H2>
+      <H2 aria-label="section title">{isLoading ? <Skeleton /> : label}</H2>
       <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 2xl:grid-cols-9 3xl:grid-cols-10s">
         {isLoading ? catalogItemsEmptyPlaceholder : catalogItems}
       </div>
