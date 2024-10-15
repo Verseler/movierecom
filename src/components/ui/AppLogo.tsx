@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 type AppLogoProps = {
   hideTitle?: boolean;
-  className: React.HTMLAttributes<HTMLElement>["className"];
+  className?: React.HTMLAttributes<HTMLElement>["className"];
 };
 
 function AppLogo({ hideTitle = false, className }: AppLogoProps) {
