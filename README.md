@@ -1,50 +1,62 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<a id="readme-top"></a>
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="src/assets/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-## Expanding the ESLint configuration
+  <h3 align="center">MovieRecom</h3>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+  <p align="center">
+     Film website recommendation
+    <br />
+    <br />
+    <a href="http://movierecom.vercel.app">View Website</a>
+  </p>
+</div>
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+![Screen Shot 2024-10-14 at 18 11 04](https://github.com/user-attachments/assets/d34b954e-3432-48bc-ab24-d16ab73ea391)
+![Screen Shot 2024-10-14 at 18 10 55](https://github.com/user-attachments/assets/ddbde1cf-0b69-4c3c-982f-bcdeaa495b65)
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+### Built With
+
+* [![React][React.js]][React-url]
+* [![Typescript][Typescript]][Typescript-url]
+* [![Tailwind][Tailwind]][Tailwind-url]
+* [![Shadcn][Shadcn]][Shadcn-url]
+* [![Redux][Redux]][Redux-url]
+
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React-url]: https://reactjs.org/
+[Typescript]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+[Typescript-url]: https://www.typescriptlang.org/
+[Tailwind]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[Tailwind-url]: https://tailwindcss.com/
+[Shadcn]: https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=shadcnui&logoColor=white
+[Shadcn-url]: https://ui.shadcn.com/
+[Redux]: https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white
+[Redux-url]: https://redux.js.org/ 
