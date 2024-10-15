@@ -31,6 +31,7 @@ export default function FilmCarousel({
   );
 
   const carouselItems = data?.map((film) => {
+    //movie has title while tv has name prop in the fetched data
     const filmType = film.hasOwnProperty("title") ? "movie" : "tv";
 
     const title =

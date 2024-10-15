@@ -21,6 +21,7 @@ export default function FilmCard({
   className,
 }: FilmCardProps) {
   const navigate = useNavigate();
+  const src = `${process.env.REACT_APP_TMDB_IMAGE_PATH}${imageSrc}`;
 
   return (
     <Card
@@ -33,7 +34,7 @@ export default function FilmCard({
       <CardContent aria-label="film card" className="relative p-0 size-full">
         <Image
           className="object-cover size-full hover:scale-110"
-          src={`${process.env.REACT_APP_TMDB_IMAGE_PATH}${imageSrc}`}
+          src={src}
           alt="film poster"
           effect="zoomIn"
         />

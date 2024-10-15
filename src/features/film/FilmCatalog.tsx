@@ -22,6 +22,7 @@ export default function FilmCatalog({
   );
 
   const catalogItems = data?.map((film) => {
+    //movie has title while tv has name prop in the fetched data
     const filmType = film.hasOwnProperty("title") ? "movie" : "tv";
 
     const title =

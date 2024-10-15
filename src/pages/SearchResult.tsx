@@ -14,11 +14,13 @@ export default function SearchResult() {
   const { data, isLoading } = useGetSearchFilmQuery({ page: page, name: name });
   const loadMorePage = () => setPage(page + 1);
 
+  const searchResultLabel = `Search Result for "${name}"`;
+
   return (
     <>
       <SearchBar />
       <AlignContainer className="py-10 space-y-10">
-        <H1 className="mt-10 md:mt-0">{`Search Result for "${name}"`}</H1>
+        <H1 className="mt-10 md:mt-0">{searchResultLabel}</H1>
         <FilmCatalog
           label=""
           data={data?.results}
