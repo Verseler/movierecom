@@ -55,7 +55,7 @@ export default function FilmCarousel({
   return (
     <div className="space-y-4">
       <H2 aria-label="section title">{label}</H2>
-      <Carousel opts={{ align: "start" }}>
+      <Carousel opts={{ align: "start", slidesToScroll: 2 }}>
         <CarouselContent className="px-4 gap-x-1.5">
           {isLoading ? carouselItemsEmptyPlaceholder : carouselItems}
         </CarouselContent>
