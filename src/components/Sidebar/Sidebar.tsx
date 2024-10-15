@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
-import Image from "../Image/Image";
-import AppLogo from "@/assets/logo.png";
+import AppLogo from "@/components/ui/AppLogo";
 import NavItem from "./NavItem";
 
 const FILM_NAV_LINKS = [
@@ -16,9 +14,7 @@ export default function Sidebar() {
 
   return (
     <nav className="fixed bottom-0 z-50 flex flex-col items-center bg-neutral-800 md:bg-transparent justify-between w-full md:h-full md:w-20 lg:w-28 py-1.5 md:ps-4 md:py-10">
-      <Link to="." className="hidden md:block">
-        <Image src={AppLogo} alt="App Logo" className="size-10" />
-      </Link>
+      <AppLogo hideTitle />
       <div className="flex items-center justify-center flex-grow gap-10 md:flex-col">
         {mainNavLinks}
       </div>
