@@ -18,7 +18,9 @@ export default function SearchBar() {
         type="text"
         role="search"
         onChange={(e) => setSearch(e.target.value)}
-        onKeyDown={(e) => e.code === "Enter" && handleSearch()}
+        onKeyDown={(e) =>
+          (e.code === "Enter" || e.key === "Enter") && handleSearch()
+        }
         className="bg-transparent border size-full rounded-3xl border-neutral-400/40 peer focus:border-neutral-400 disabled:text-neutral-500 pe-10 ps-5 focus:outline-none"
       />
       <button
