@@ -1,4 +1,6 @@
-type FilmMetadataProps = {
+import { motion, AnimationProps } from "framer-motion";
+
+type FilmMetadataProps = AnimationProps & {
   rating: string | null;
   duration: number | null;
   releasedYear: string | null;
@@ -10,28 +12,36 @@ export default function FilmMetadata({
   duration,
   rating,
   releasedYear,
+  ...props
 }: FilmMetadataProps) {
   return (
-    <div
+    <motion.div
       aria-label="film metadata"
       className="hidden md:flex items-center text-sm font-semibold gap-x-3.5"
+      {...props}
     >
       {rating && (
         <>
           <span className="text-sm material-symbols-outlined">star</span>
-          <span aria-label="Rating" className="w-max">{rating}</span>
+          <span aria-label="Rating" className="w-max">
+            {rating}
+          </span>
           <span>&#x2022;</span>
         </>
       )}
       {duration && (
         <>
-          <span aria-label="Duration" className="w-max">{duration} mins</span>
+          <span aria-label="Duration" className="w-max">
+            {duration} mins
+          </span>
           <span>&#x2022;</span>
         </>
       )}
       {releasedYear && (
         <>
-          <span aria-label="Release year" className="w-max">{releasedYear}</span>
+          <span aria-label="Release year" className="w-max">
+            {releasedYear}
+          </span>
           <span>&#x2022;</span>
         </>
       )}
@@ -44,6 +54,6 @@ export default function FilmMetadata({
           return ", " + category;
         })}
       </span>
-    </div>
+    </motion.div>
   );
 }

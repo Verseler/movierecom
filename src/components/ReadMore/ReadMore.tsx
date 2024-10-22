@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimationProps } from "framer-motion";
 import P from "../Typography/P";
 
-type ReadMoreProps = {
+type ReadMoreProps = AnimationProps &{
   id: string | number;
   text: string | null | undefined;
   amountOfWords?: number;
@@ -14,6 +14,7 @@ export default function ReadMore({
   text,
   className,
   amountOfWords = 36,
+  ...props
 }: ReadMoreProps) {
   if (!text) return null;
 
@@ -32,37 +33,39 @@ export default function ReadMore({
   };
 
   return (
-    <P className={className}>
-      {beginText}
-      {itCanOverflow && (
-        <>
-          {!isExpanded && <span>... </span>}
-          <motion.span
-            className={`${!isExpanded && "hidden"}`}
-            aria-hidden={!isExpanded}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{
-              opacity: isExpanded ? 1 : 0,
-              height: isExpanded ? "auto" : 0,
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            {" "}
-            {endText}
-          </motion.span>
-          <span
-            className="ml-2 font-medium text-white hover:underline"
-            role="button"
-            tabIndex={0}
-            aria-expanded={isExpanded}
-            aria-controls={id.toString()}
-            onKeyDown={handleKeyboard}
-            onClick={() => setIsExpanded(!isExpanded)}
-          >
-            {isExpanded ? "show less" : "show more"}
-          </span>
-        </>
-      )}
-    </P>
+    <motion.div {...props}>
+      <P className={className}>
+        {beginText}
+        {itCanOverflow && (
+          <>
+            {!isExpanded && <span>... </span>}
+            <motion.span
+              className={`${!isExpanded && "hidden"}`}
+              aria-hidden={!isExpanded}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{
+                opacity: isExpanded ? 1 : 0,
+                height: isExpanded ? "auto" : 0,
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              {" "}
+              {endText}
+            </motion.span>
+            <span
+              className="ml-2 font-medium text-white hover:underline"
+              role="button"
+              tabIndex={0}
+              aria-expanded={isExpanded}
+              aria-controls={id.toString()}
+              onKeyDown={handleKeyboard}
+              onClick={() => setIsExpanded(!isExpanded)}
+            >
+              {isExpanded ? "show less" : "show more"}
+            </span>
+          </>
+        )}
+      </P>
+    </motion.div>
   );
 }

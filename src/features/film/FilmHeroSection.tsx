@@ -92,42 +92,33 @@ export default function FilmHeroSection({
             aria-label="film hero section"
             className="space-y-4 w-full md:max-w-[70vh]"
           >
-            <motion.div
+            <Title
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.3 }}
+              aria-label="film title"
+              className="text-center md:text-start"
             >
-              <Title
-                aria-label="film title"
-                className="text-center md:text-start"
-              >
-                {title}
-              </Title>
-            </motion.div>
-            <motion.div
+              {title}
+            </Title>
+            <FilmMetadata
+              rating={rating}
+              duration={duration}
+              releasedYear={releasedYear}
+              categories={categories}
               initial={{ y: -15, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.2 }}
-            >
-              <FilmMetadata
-                rating={rating}
-                duration={duration}
-                releasedYear={releasedYear}
-                categories={categories}
-              />
-            </motion.div>
-            <motion.div
+            />
+            <ReadMore
+              id={id}
+              aria-label="film description"
+              text={filmDetails?.overview}
+              className="hidden md:block"
               initial={{ y: -15, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.4 }}
-            >
-              <ReadMore
-                aria-label="film description"
-                text={filmDetails?.overview}
-                id={id}
-                className="hidden md:block"
-              />
-            </motion.div>
+            />
             <motion.div
               initial={{ y: -15, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
