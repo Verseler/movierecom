@@ -49,7 +49,9 @@ export default function FilmCatalog({
 
       {loadMorePage && (
         <div className="flex items-center justify-center pt-10">
-          <Button onClick={loadMorePage}>Load More</Button>
+          <Button onClick={loadMorePage} disabled={isLoading}>
+            Load More
+          </Button>
         </div>
       )}
     </div>
