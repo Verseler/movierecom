@@ -12,17 +12,14 @@ export function getReleasedDate(filmDetails: MovieDetails | TvSeriesDetails | un
   if(!filmDetails) {
     return null;
   }
-
   else if(isMovie(filmDetails)) {
-    const movieDetails = filmDetails as MovieDetails;
-
-    if(!movieDetails.release_date) return null;
-    return getYearFromDate(movieDetails.release_date)
+    return getYearFromDate(filmDetails.release_date)
+  }
+  else if(isTvSeries(filmDetails)) {
+    return getYearFromDate(filmDetails.first_air_date)
   }
 
-  const tvSeriesDetails = filmDetails as TvSeriesDetails
-  if(!tvSeriesDetails.first_air_date) return null;
-  return getYearFromDate(tvSeriesDetails.first_air_date)
+  return null
 }
 
 
@@ -41,75 +38,54 @@ export function getFilmDuration(filmDetails: MovieDetails | TvSeriesDetails | un
   }
 
   else if(isMovie(filmDetails)) {
-    const movieDetails = filmDetails as MovieDetails;
-    return movieDetails?.runtime
+    return filmDetails.runtime
   }
 
-  const tvSeriesDetails = filmDetails as TvSeriesDetails
-  if(tvSeriesDetails?.episode_run_time) return null;
-  return tvSeriesDetails.episode_run_time.reduce((acc, curr) => acc + curr, 0);
+  else if(isTvSeries(filmDetails)) {
+    const totalRuntime = filmDetails.episode_run_time.reduce((total, curr) => total + curr, 0);
+    return totalRuntime;
+  }
+
+  return null
 }
 
 export function getFilmName(filmDetails: MovieDetails | TvSeriesDetails | undefined): string {
- 
   if(!filmDetails) {
-    return "Not Founda"
+    return "Not Found"
   }
-
   else if(isMovie(filmDetails)) {
-    const movieDetails = filmDetails as MovieDetails;
-
-    if(!movieDetails.title) return "Not Foundb"
-    return getYearFromDate(movieDetails.title)
+    return filmDetails.title
+  }
+  else if(isTvSeries(filmDetails)) {
+    return filmDetails.name
   }
 
-  const tvSeriesDetails = filmDetails as TvSeriesDetails
-  if(!tvSeriesDetails.name) return "Not Foundc";
-  return getYearFromDate(tvSeriesDetails.name)
+  return "Not Found"
 }
 
 
 
-export function isMovie(value: unknown): value is Movie {
-  if (!value) {
-    return false;
-  }
-  else if(typeof value === 'object' && 'title' in value && typeof (value as Movie).title === 'string') {
-    return true;
-  }
-
-  return value.hasOwnProperty("title")
+export function isMovie(film: Movie | MovieDetails | TvSeries | TvSeriesDetails): film is Movie | MovieDetails {
+  return (film as Movie).title !== undefined;
 }
 
-export function isTvSeries(value: unknown): value is TvSeries {
-  if (!value) {
-    return false;
-  }
-  else if(typeof value === 'object' && 'name' in value && typeof (value as TvSeries).name === 'string') {
-    return true;
-  }
-
-  return value.hasOwnProperty("name")
+export function isTvSeries(film: Movie | MovieDetails | TvSeries | TvSeriesDetails): film is TvSeries | TvSeriesDetails {
+  return (film as TvSeries).name !== undefined
 }
 
 
-export function getFilmId(value: unknown): number {
-  const fallbackFilmId = 1;
+export function getFilmId(film: Movie | MovieDetails | TvSeries | TvSeriesDetails  | undefined): number {
+  const fallbackFilmId = 1622; //default fallback id is supernatural film
 
-  if(!isMovie(value) && !isTvSeries(value)) {
-    return fallbackFilmId;
-  }
-
-  const movie = value as Movie;
-  if(!movie.id) {
+  if(!film || !film.id) {
     return fallbackFilmId
-  } 
-  else if(typeof movie.id === 'object') {
+  }
+  else if(typeof film.id === 'object') {
    return fallbackFilmId
   }
-  else if(typeof movie.id === 'string') {
-    return Number(movie.id);
+  else if(typeof film.id === 'string') {
+    return Number(film.id);
   }
 
-  return movie.id
+  return film.id
 }
