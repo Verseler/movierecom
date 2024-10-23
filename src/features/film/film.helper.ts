@@ -13,10 +13,12 @@ export function getReleasedDate(filmDetails: MovieDetails | TvSeriesDetails | un
     return null;
   }
   else if(isMovie(filmDetails)) {
-    return getYearFromDate(filmDetails.release_date)
+    const releasedDate = getYearFromDate(filmDetails.release_date)
+    return releasedDate;
   }
   else if(isTvSeries(filmDetails)) {
-    return getYearFromDate(filmDetails.first_air_date)
+    const releasedDate = getYearFromDate(filmDetails.first_air_date)
+    return releasedDate;
   }
 
   return null
